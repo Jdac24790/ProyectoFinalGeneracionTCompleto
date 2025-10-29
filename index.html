@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <title>Nube AI - OnixNube</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <link rel="icon" type="image/png" href="./AVC.png">
+    <link rel="apple-touch-icon" href="./AVC.png">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="/static/onixnube.css">
+    
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar" role="navigation">
+        <div class="sidebar-header">
+            <h3>Conversaciones</h3>
+            <div class="sidebar-actions">
+                <button class="new-chat-btn" aria-label="Nueva conversación">
+                    <i class="fas fa-plus"></i> Nuevo
+                </button>
+                <button class="temp-chat-btn" title="Chat temporal" aria-label="Chat temporal">
+                    <i class="fas fa-ghost"></i>
+                </button>
+                <button class="settings-btn" id="settings-btn" title="Configuración" aria-label="Configuración">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chat-history" id="chat-history-container" role="list"></div>
+    </aside>
+
+    <main class="main-content" id="main-content">
+        <header class="navbar">
+            <button class="menu-btn" id="menu-btn" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo-container">
+                <div class="logo-text" role="heading" aria-level="1">
+                    <span class="logo-onix">Nube</span> AI
+                </div>
+            </div>
+        </header>
+
+        <section class="main-chat">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+                
+                <div id="file-indicator" role="status"></div>
+
+                <div class="chat-input-container">
+                    <div class="action-buttons-container">
+                        <button id="search-mode-btn" class="action-btn" title="Búsqueda web" aria-pressed="false">
+                            <i class="fas fa-globe"></i> <span>Web</span>
+                        </button>
+                        <button id="image-gen-mode-btn" class="action-btn" title="Generar imagen" aria-pressed="false">
+                            <i class="fas fa-image"></i> <span>Imagen</span>
+                        </button>
+                    </div>
+                    
+                    <div class="chat-input">
+                        <label for="fileInput" class="upload-btn" title="Adjuntar archivo" aria-label="Adjuntar archivo">
+                            <i class="fas fa-paperclip"></i>
+                        </label>
+                        <input type="file" id="fileInput" style="display: none;" 
+                               accept="image/png,image/jpeg,image/jpg,image/gif,image/webp,.txt,.pdf,.docx,.rtf"
+                               aria-label="Selector de archivo">
+                        <textarea id="userInput" 
+                                  placeholder="Escribe tu mensaje..." 
+                                  rows="1"
+                                  aria-label="Campo de mensaje"
+                                  autocomplete="off"
+                                  spellcheck="true"></textarea>
+                        <button id="sendBtn" title="Enviar" aria-label="Enviar mensaje">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay hidden" id="settings-modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <h3>Instrucciones Personalizadas</h3>
+            <p>Define cómo quieres que Nube responda.</p>
+            <textarea id="instructions-textarea" 
+                      placeholder="Ejemplo: Sé conciso y técnico..."
+                      aria-label="Instrucciones personalizadas"></textarea>
+            <div class="modal-actions">
+                <button class="modal-btn-save" id="save-instructions-btn">Guardar</button>
+                <button class="modal-btn-close" id="close-instructions-btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/onixnube.js"></script>
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+</body>
+</html>

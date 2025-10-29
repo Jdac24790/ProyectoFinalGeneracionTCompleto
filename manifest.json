@@ -1,0 +1,16 @@
+{
+  "name": "Nube AI",
+  "short_name": "NubeAI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "description": "Chat AI OnixNube con búsqueda, visión e imágenes",
+  "icons": [
+    {
+      "src": "/static/AVC.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
